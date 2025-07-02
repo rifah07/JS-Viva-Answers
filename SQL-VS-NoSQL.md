@@ -60,7 +60,7 @@ This section explains the main differences between SQL (like MySQL) and NoSQL (l
 ## Easy Example
 
 **SQL (MySQL) Table:**
-```bash
+
 CREATE TABLE users (
 id INT PRIMARY KEY,
 name VARCHAR(100),
@@ -70,7 +70,6 @@ email VARCHAR(100)
 
 **MongoDB (NoSQL) Document:**
 
-```bash
 {
 "id": 1,
 "name": "John Doe",
@@ -87,5 +86,8 @@ email VARCHAR(100)
 
 Choose the one that fits your project needs!
 
+---
+
+### 🌟Learning new technologies can feel overwhelming at times, but remember: every expert was once a beginner. Take small steps, practice regularly, and don’t be afraid to ask questions. Your hard work will pay off—keep going, and believe in yourself! 🚀
 
 Thank you for reading!
