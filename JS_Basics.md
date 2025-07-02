@@ -146,4 +146,4 @@ When an event occurs on an HTML element, an **event handler** (or event listener
 
 ## Conclusion
 
-Thank you for reading. Hpe this help you and all the best! 🌸
+Thank you for reading. Hope this help you and all the best! 🌸
