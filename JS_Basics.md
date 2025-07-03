@@ -136,6 +136,43 @@ For example, callbacks are commonly used with array methods (`forEach`, `map`) a
 
 ---
 
+## JavaScript Closure?
+
+A **JavaScript closure** is a feature where an inner function has access to the variables and parameters of its outer (enclosing) function, even after the outer function has finished executing. This means the inner function "remembers" the environment in which it was created.
+
+**In simple words:**  
+A closure lets a function keep using variables from its parent function, even after the parent function is done running.
+
+# Example  
+function makeCounter() {  
+let count = 0;  
+return function() {   
+return count++;  
+};  
+}  
+
+const counter = makeCounter();  
+
+console.log(counter()); // 0  
+console.log(counter()); // 1  
+console.log(counter()); // 2  
+
+
+- In this example, the inner function returned by `makeCounter` still has access to the `count` variable, even after `makeCounter` has finished running.
+- Each time you call `counter()`, it remembers and updates the value of `count`.
+
+
+### Why are Closures Useful?
+
+- **Data privacy:** Create private variables that cannot be accessed from outside the function.
+- **Preserve state:** Functions can remember information between calls.
+- **Callbacks:** Widely used in asynchronous code, event handlers, and functional programming.
+
+
+**Closures are a core concept in JavaScript and are used for many advanced patterns and techniques.**  
+
+---
+
 ## Event Handling
 
 **Event handling** in JavaScript is the process of listening for and responding to events—actions that happen in the browser, such as user clicks, key presses, or page loads.
