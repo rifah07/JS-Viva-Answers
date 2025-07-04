@@ -136,7 +136,7 @@ For example, callbacks are commonly used with array methods (`forEach`, `map`) a
 
 ---
 
-## JavaScript Closure?
+## JavaScript Closure
 
 A **JavaScript closure** is a feature where an inner function has access to the variables and parameters of its outer (enclosing) function, even after the outer function has finished executing. This means the inner function "remembers" the environment in which it was created.
 
@@ -162,7 +162,7 @@ console.log(counter()); // 2
 - Each time you call `counter()`, it remembers and updates the value of `count`.
 
 
-### Why are Closures Useful?
+## Why are Closures Useful?
 
 - **Data privacy:** Create private variables that cannot be accessed from outside the function.
 - **Preserve state:** Functions can remember information between calls.
@@ -178,6 +178,76 @@ console.log(counter()); // 2
 **Event handling** in JavaScript is the process of listening for and responding to events—actions that happen in the browser, such as user clicks, key presses, or page loads.
 
 When an event occurs on an HTML element, an **event handler** (or event listener) is a function that executes in response. Event handlers are attached to elements using methods like `addEventListener`, or by assigning a function to an element's `onevent` property (e.g., `onclick`). The event handler receives an event object containing details about the event, allowing developers to create interactive and dynamic web pages.
+
+---
+
+## Event Loop
+
+The **JavaScript event loop** is a mechanism that allows JavaScript to handle many tasks at once, even though it runs in a single thread (one thing at a time). It makes JavaScript capable of doing things like responding to user clicks, fetching data from servers, and running timers—all without stopping or blocking the main program.
+
+---
+
+## How Does the Event Loop Work?
+
+1. **Call Stack:**  
+   JavaScript runs code line by line. Each function call is added to the "call stack" (like a to-do list). Only one task runs at a time.
+
+2. **Web APIs:**  
+   When you use things like `setTimeout`, `fetch`, or event listeners, these tasks are handed off to the browser’s Web APIs, which handle them in the background.
+
+3. **Callback Queue (Task Queue):**  
+   When a background task is finished (like a timer or API response), its callback function is placed in the callback queue.
+
+4. **Microtask Queue:**  
+   Promises and some other async tasks use a special microtask queue, which is checked before the callback queue.
+
+5. **The Event Loop:**  
+   The event loop constantly checks if the call stack is empty. If it is, it takes the first task from the microtask queue (if any), or else from the callback queue, and puts it on the stack to run.
+
+---
+
+## Simple Analogy
+
+Imagine you are the only chef in a small restaurant (JavaScript is single-threaded):
+
+- You take orders (run code).
+- If an order takes time (like grilling a burger), you start it and move on to the next order (asynchronous task).
+- When the burger is ready (task is done), you get notified and serve it (event loop puts the callback on the stack).
+- You never stop working, and you always serve orders as soon as you can!
+
+---
+
+## Example
+
+console.log("Start");  
+
+setTimeout(() => {  
+console.log("Timeout callback");  
+}, 0);  
+
+Promise.resolve().then(() => {  
+console.log("Promise resolved");  
+});  
+
+console.log("End");  
+
+**Output:**  
+
+Start  
+End  
+Promise resolved  
+Timeout callback  
+
+- `"Start"` and `"End"` run first (synchronous).
+- The promise's `.then` runs before the timeout because microtasks have priority over the callback queue.
+
+---
+
+## Why is the Event Loop Important?
+
+- **Non-blocking:** Lets JavaScript handle many tasks without freezing the page.
+- **Asynchronous:** Supports timers, API calls, and user interactions smoothly.
+- **Order matters:** Understanding the event loop helps you predict when your code will run.
 
 ---
 
